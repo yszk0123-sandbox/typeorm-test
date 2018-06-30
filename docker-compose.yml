@@ -1,0 +1,20 @@
+version: "2"
+services:
+  typeorm-test:
+    container_name: typeorm-test
+    image: postgres:10.4
+    ports:
+      - "5432:5432"
+    volumes:
+      - volume-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    networks:
+      - default
+      - network-global
+volumes:
+  volume-db:
+networks:
+  network-global:
+    driver: bridge
